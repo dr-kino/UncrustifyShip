@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Indent all modified files given by 'git status' command.
+
+git status | sed -n '/modified:/{s/^.*://;p}' | grep "\.h$\|\.c$\|\.cpp$\|\.hpp$" | \
+		xargs -Inome uncrustify -c style.cfg --replace nome
+
