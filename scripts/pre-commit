@@ -19,20 +19,19 @@ fi
 # If there are whitespace errors, print the offending file names and fail.
 #exec git diff-index --check --cached $against --
 
-echo "## Executing uncrustify"
-# CONFIGURATION
+##########################################################################
+## UNCRUSTIFY CONFIGURATION                                             ##
+##########################################################################
 # set uncrustify config location
 UNCRUST_CONFIG="scripts/style.cfg"
-echo "$UNCRUST_CONFIG"
 # get list of staged files
 staged_files=$(git diff --name-only --staged | grep -i -E -- 'src' | grep -E '\.(c|h|cpp|hpp)$')
-echo "$staged_files"
-
 if [ -n "$staged_files" ]; then
+	echo "## Executing uncrustify"
     uncrustify -c $UNCRUST_CONFIG $staged_files --replace --no-backup
     if [ $? -ne 0 ]; then
         exit 1
     fi
     git add $staged_files
+	echo "## Style checked and changes commited"
 fi
-echo "## Style checked and changes commited"
