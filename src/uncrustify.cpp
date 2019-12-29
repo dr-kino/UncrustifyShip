@@ -2,8 +2,8 @@
 using namespace std;
 
 int
-main(void)
-{
+main
+        (void){
 	cout << "Uncrustify Test" << endl;
 	return 0;
 }
