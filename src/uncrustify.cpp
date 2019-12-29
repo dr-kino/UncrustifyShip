@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
 
-int main(void) {
+int main  (void){
 cout << "Uncrustify Test" << endl;
-	return 0;}
+return 0;}
